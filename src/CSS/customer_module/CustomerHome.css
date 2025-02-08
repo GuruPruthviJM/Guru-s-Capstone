@@ -1,0 +1,115 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* .column {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  justify-content: space-around !important;
+  align-items: space-between;
+} */
+.column {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers items horizontally */
+  align-items: center; /* Centers items vertically if needed */
+  /*  gap: 20px; Adds spacing between cards */
+}
+
+
+.card {
+  flex: 1 1 calc(33.333% - 1rem);
+  margin: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  /* background-color: #f44336 !important; */
+  color: black !important;
+  width: 18rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-red {
+  flex: 1 1 calc(33.333% - 1rem);
+  /* margin: 0.5rem; */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  /* background-color: #bc645d !important; */
+  background-color: #00bcd4;
+  color: white !important;
+  width: 16rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-color{
+  background-color: #0d47a1;
+  color: white;
+  font-style: bold;
+}
+
+.btn-color:hover{
+  background-color: #64b5f6;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  /* background-color: #438e9c; */
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-subtitle {
+  font-size: 1rem;
+  color: #ffffff !important;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-link {
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: none;
+  margin-right: 0.5rem;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+.dummy-data {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+  }
+
+  .buy-button {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  .buy-button .btn {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  h3{
+    text-decoration: underline;
+    padding-left: 1rem;
+}
+

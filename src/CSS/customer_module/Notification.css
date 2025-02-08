@@ -1,0 +1,40 @@
+/* Notification card styles */
+.notification-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Add a shadow when hovering over the card */
+.notification-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h2{
+    text-decoration: underline;
+}
+
+/* Card header styles */
+.notification-timestamp {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Card body styles */
+.notification-card .card-body {
+    padding: 15px;
+}
+
+/* Card title styles */
+.notification-card .card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Card text styles */
+.notification-card .card-text {
+    font-size: 14px;
+    color: #555;
+}

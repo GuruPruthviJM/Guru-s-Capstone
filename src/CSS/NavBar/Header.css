@@ -1,0 +1,58 @@
+.custom-navbar {
+    background-color: #00acc1 !important;
+}
+   
+
+.navbar-nav .nav-link {
+    white-space: nowrap;
+}  
+
+.search-container {
+    width: 250px; /* Adjust width as needed */
+    position: relative;
+}
+  
+.search-input {
+    width: 100%;
+    padding-right: 35px; /* Make space for the icon */
+    border-radius: 20px; /* Optional: rounded corners */
+}
+  
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: gray;
+    cursor: pointer;
+}
+
+.highlight-nav-link {
+    color: white !important; /* Keep the default white color */
+    font-weight: bold;
+    position: relative;
+  }
+  
+  .highlight-nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background-color: white; /* Highlight effect */
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .highlight-nav-link:hover::after {
+    transform: scaleX(1);
+  }
+
+/* Remove 'X' (clear button) in search input for WebKit browsers */
+.search-input::-webkit-search-decoration,
+.search-input::-webkit-search-cancel-button,
+.search-input::-webkit-search-results-button,
+.search-input::-webkit-search-results-decoration {
+  display: none;
+}
