@@ -1,0 +1,57 @@
+x.SignUpcard {
+    background-color: white;
+    color: #264A50;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 20px; /* Add margin for spacing around the card */
+}
+
+.SignUpcard .h2-signupheading{
+    color: #264A50;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.form-label {
+    display: block;
+    color: #264A50;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #264A50;
+    border-radius: 4px;
+}
+
+.form-group {
+    margin-bottom: 15px; /* Add margin between form groups */
+}
+
+button[type="submit"] {
+    background-color: #264A50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #A7C7C9;
+    color: white;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .SignUpcard {
+        width: 90%;
+        margin: 0 auto;
+    }
+}

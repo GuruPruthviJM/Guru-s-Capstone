@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Card from "../../components/Card";
 import "../../CSS/customer_module/CustomerHome.css";
 
-export default function CustomerHome() {
+export default function EmployeeHome() {
   const [activeCard, setActiveCard] = useState(null);
 
   const handleCardClick = (index) => {
@@ -20,7 +20,7 @@ export default function CustomerHome() {
 
   return (
     <div>
-        <h3>Services Offered</h3>
+        <h3>Tickets To Be Solved</h3>
         <div className="column">
         {cardData.map((data, i) => (
             <Card

@@ -12,7 +12,8 @@ export const Header = () => {
     { name: "About Us", path: "/about" },
     { name: "My Tickets", path: "/ticket" },
     { name: "Notifications", path: "/notification" },
-    { name: "Payment", path: "/payment" },
+    { name: "Payment", path: "/payments" },
+    { name: "Buy Subcription", path: "/purchase" },
   ];
 
   useEffect(() => {

@@ -1,0 +1,49 @@
+.paymentCard {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .paymentCard .h2-payment {
+    margin-bottom: 20px;
+    color: #00acc1;
+    text-align: center; /* Center the heading */
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: normal; /* Make the labels not bold */
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+  
+  .form-check-input {
+    margin-right: 10px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
