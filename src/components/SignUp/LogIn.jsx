@@ -39,7 +39,10 @@ const LoginForm = () => {
           <Dropdown />
           <button type="submit" className="btn btn-primary w-100">Login</button>
           <div className="text-center mt-3">
-            <a href="#" className="text-decoration-none">Forgot Password?</a>
+            <a href="#" className="text-decoration-none" onClick={(e) => { 
+              e.preventDefault(); 
+              navigate("/reset"); 
+            }}>Forgot Password?</a>
             <span className="mx-2">|</span>
             {/* Redirect to the Signup page on click */}
             <a href="#" className="text-decoration-none" onClick={(e) => { 
