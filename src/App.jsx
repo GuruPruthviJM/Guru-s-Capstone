@@ -44,6 +44,7 @@ function App() {
           <Route path='/admins/updateEmployee' element={<UpdateEmployee />} />
           {/* Manager */}
           <Route path='/managers' element={<ManagerHome />} />
+          <Route path='/managers/:id/tickets/:ticketStatus' element={<ManagerHome />} />
       </Route>
     )
   );
