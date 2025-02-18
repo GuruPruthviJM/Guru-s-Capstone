@@ -17,6 +17,7 @@ import Reset from './components/SignUp/Reset.jsx';
 import DeleteEmployee from './admin_module/screens/DeleteEmployee.jsx'
 import UpdateEmployee from './admin_module/screens/UpdateEmployee.jsx'
 import ManagerHome from './manager_module/screens/ManagerHome.jsx'
+import ManagerTickets from './manager_module/screens/ManagerTickets.jsx'
 
 function App() {
   const router = createBrowserRouter(
@@ -44,7 +45,7 @@ function App() {
           <Route path='/admins/updateEmployee' element={<UpdateEmployee />} />
           {/* Manager */}
           <Route path='/managers' element={<ManagerHome />} />
-          <Route path='/managers/:id/tickets/:ticketStatus' element={<ManagerHome />} />
+          <Route path='/managers/:id/tickets/:ticketStatus' element={<ManagerTickets />} />
       </Route>
     )
   );

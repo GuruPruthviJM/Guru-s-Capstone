@@ -1,4 +1,4 @@
-import getTicketStatus from "../../manager_module/services/managerStatusService";
+import getTicketStatus from "../../../manager_module/services/managerStatusService";
 import { FETCH_TICKETS_REQUEST, FETCH_TICKETS_SUCCESS, FETCH_TICKETS_FAILURE } from "./managerStatusType";
 
 export const fetchTicketStats = (id) => async (dispatch) => {

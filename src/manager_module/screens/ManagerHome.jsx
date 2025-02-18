@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTicketStats } from "../../redux/manager_module/managerStatusActions";
+import { fetchTicketStats } from "../../redux/manager_module/managerHomeStatus/managerStatusActions";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 
