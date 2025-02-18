@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
-import '../../CSS/customer_module/MyTicket.css';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTickets } from "../../redux/customer_model/Ticket/ticketActions";
+import { useParams, useNavigate } from "react-router-dom";
+import "../../CSS/customer_module/MyTicket.css";
 
-const ManagerList = () => {
-  const [managers, setManagers] = useState([
-    { name: 'Guru', id: '0204', domain: 'Technology' },
-    { name: 'Steve Smith', id: '0207', domain: 'Marketing' },
-    { name: 'Federson', id: '0206', domain: 'Sales' },
-    { name: 'Johny', id: '0208', domain: 'HR' },
-  ]);
+const TicketList = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { tickets, loading, error } = useSelector((state) => state.tickets);
+  
+  const { id: customerId } = useParams(); 
 
-  const addManager = () => {
-    const newManager = { name: 'New Manager', id: '0210', domain: 'Finance' };
-    setManagers([...managers, newManager]);
+  useEffect(() => {
+    if (customerId) {
+      dispatch(fetchTickets(customerId));
+    }
+  }, [dispatch, customerId]);
+
+  const handleClick = (customerId, ticketId) => {
+    navigate(`${ticketId}`);
   };
 
-  const handleClick = (value) => {
-    alert(`You clicked: ${value}`);
-  };
-
-  const headers = Object.keys(managers[0]); 
+  if (loading) return <div className="container mt-5">Loading...</div>;
+  if (error) return <div className="container mt-5 text-danger">Error: {error}</div>;
+  if (!tickets || tickets.length === 0) return <div className="container mt-5">No tickets available</div>;
 
   return (
     <div className="container mt-5">
@@ -27,19 +32,21 @@ const ManagerList = () => {
         <table className="table table-bordered">
           <thead>
             <tr>
-              {headers.map((header, index) => (
-                <th key={index}>{header.charAt(0).toUpperCase() + header.slice(1)}</th>
-              ))}
+              <th>Ticket ID</th>
+              <th>Ticket Type</th>
+              <th>Ticket Description</th>
+              <th>Ticket Status</th>
+              <th>Ticket Raise Date</th>
             </tr>
           </thead>
           <tbody>
-            {managers.map((manager, index) => (
-              <tr key={index}>
-                {headers.map((header, idx) => (
-                  <td key={idx} onClick={() => handleClick(manager[header])} style={{ cursor: 'pointer', color: 'blue' }}>
-                    {manager[header]}
-                  </td>
-                ))}
+            {tickets.map((ticket, index) => (
+              <tr key={index} onMouseEnter={(e) => e.currentTarget.style.cursor = "pointer"} onClick={() => handleClick(customerId, ticket.ticketId)}>
+                <td style={{ color: "blue" }}>{ticket.ticketId}</td>
+                <td>{ticket.ticketType}</td>
+                <td>{ticket.ticketDescription}</td>
+                <td>{ticket.ticketStatus}</td>
+                <td>{new Date(ticket.ticketRaiseDate).toLocaleDateString("en-GB")}</td>
               </tr>
             ))}
           </tbody>
@@ -49,4 +56,4 @@ const ManagerList = () => {
   );
 };
 
-export default ManagerList;
+export default TicketList;

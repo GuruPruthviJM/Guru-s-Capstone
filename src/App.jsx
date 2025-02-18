@@ -16,30 +16,34 @@ import AddEmployee from './admin_module/screens/AddEmployee.jsx'
 import Reset from './components/SignUp/Reset.jsx';
 import DeleteEmployee from './admin_module/screens/DeleteEmployee.jsx'
 import UpdateEmployee from './admin_module/screens/UpdateEmployee.jsx'
+import ManagerHome from './manager_module/screens/ManagerHome.jsx'
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/reset" element={<Reset />} />
-          <Route path="/" element={<CustomerHome />} />
+          <Route path="/login" element={<Login />} /> {/* Done */}
+          <Route path="/signup" element={<SignUp />} /> {/* Done */}
+          <Route path="/reset" element={<Reset />} /> 
+          <Route path="/" element={<CustomerHome />} />  
           <Route path="/customers" element={<CustomerHome />} />
-          <Route path='/about' element={<AboutUs />} />
+          <Route path='/about' element={<AboutUs />} /> {/* Done */}
           <Route path='/notification' element={<Notifications />} />
-          <Route path='/ticket' element={<MyTicket />} />
-          <Route path='/purchase' element={<PurchaseSubcription />} />
-          <Route path='/payments' element={<Payment />} />
+          <Route path='/customers/:id/tickets' element={<MyTicket />} /> {/* Done */}
+          <Route path='/customers/:id/purchase' element={<PurchaseSubcription />} /> {/* Done */}
+          <Route path='/customers/:id/payments' element={<Payment />} /> {/* Done */}
           {/* Employee */}
-          <Route path="/employees/collegue" element={<Collegue />} />
+          <Route path="/employees/:id/collegue" element={<Collegue />} />
           <Route path='/employees' element={<EmployeeHome />} />
           <Route path='/employees/notifications' element={<EmployeeNotifications />} />
           {/* Admin */}
-          <Route path='/admin' element={<Admin />} />
-          <Route path='/admin/addEmployee' element={<AddEmployee />} />
-          <Route path='/admin/deleteEmployee' element={<DeleteEmployee />} />
-          <Route path='/admin/updateEmployee' element={<UpdateEmployee />} />
+          <Route path='/admins' element={<Admin />} />
+          <Route path='/admins/addEmployee' element={<AddEmployee />} />
+          
+          <Route path='/admins/deleteEmployee' element={<DeleteEmployee />} />
+          <Route path='/admins/updateEmployee' element={<UpdateEmployee />} />
+          {/* Manager */}
+          <Route path='/managers' element={<ManagerHome />} />
       </Route>
     )
   );

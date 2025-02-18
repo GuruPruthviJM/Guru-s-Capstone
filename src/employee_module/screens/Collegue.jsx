@@ -1,19 +1,33 @@
-import React, { useState } from 'react';
-import '../../CSS/customer_module/MyTicket.css';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCollegues } from "../../redux/employee_module/collegue/collegueActions";
+import "../../CSS/customer_module/MyTicket.css";
+import { useParams } from "react-router";
 
 const Collegue = () => {
-  const [managers, setManagers] = useState([
-    { name: 'Johny', id: '0208', domain: 'HR', type: 'manager' },
-    { name: 'Guru', id: '0204', domain: 'Technology', type: 'employee' },
-    { name: 'Steve Smith', id: '0207', domain: 'Marketing', type: 'employee' },
-    { name: 'Federson', id: '0206', domain: 'Sales', type: 'employee' },
-  ]);
+  const dispatch = useDispatch();
+  const { collegues, loading, error } = useSelector((state) => state.collegue);
+
+  // useEffect(() => {
+  //   dispatch(fetchCollegues());
+  // }, [dispatch]);
+  const { id: employeeId } = useParams(); 
+
+  useEffect(() => {
+    if (employeeId) {
+      dispatch(fetchCollegues(employeeId));
+    }
+  }, [dispatch, employeeId]);
 
   const handleClick = (value) => {
     alert(`You clicked: ${value}`);
   };
 
-  const headers = Object.keys(managers[0]);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p className="alert alert-danger">{error}</p>;
+  if (!collegues.length) return <p>No colleagues found.</p>;
+
+  const headers = ["employeeId", "name", "designation", "email"];
 
   return (
     <div className="container mt-5">
@@ -28,20 +42,20 @@ const Collegue = () => {
             </tr>
           </thead>
           <tbody>
-            {managers
-              .sort((a, b) => (a.type === 'manager' ? -1 : 1)) // Sort managers to the top
-              .map((manager, index) => (
-                <tr 
-                  key={index} 
-                  style={manager.type === 'manager' ? { backgroundColor: 'green', fontWeight: 'bold' } : {}}
+            {collegues
+              .sort((a, b) => (a.type === "manager" ? -1 : 1)) // Sort managers to the top
+              .map((collegue, index) => (
+                <tr
+                  key={index}
+                  style={collegue.type === "manager" ? { backgroundColor: "green", fontWeight: "bold" } : {}}
                 >
                   {headers.map((header, idx) => (
-                    <td 
-                      key={idx} 
-                      onClick={() => handleClick(manager[header])} 
-                      style={{ cursor: 'pointer', color: 'blue' }}
+                    <td
+                      key={idx}
+                      onClick={() => handleClick(collegue[header])}
+                      style={{ cursor: "pointer", color: "blue" }}
                     >
-                      {manager[header]}
+                      {collegue[header]}
                     </td>
                   ))}
                 </tr>

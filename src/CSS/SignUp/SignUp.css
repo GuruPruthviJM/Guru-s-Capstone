@@ -9,6 +9,20 @@
     margin: 20px; /* Add margin for spacing around the card */
 }
 
+.password-container {
+    position: relative;
+  }
+  
+  .password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+  }
+  
+
 .SignUpcard .h2-signupheading{
     color: #264A50;
     margin-bottom: 15px;

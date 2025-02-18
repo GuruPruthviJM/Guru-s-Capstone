@@ -1,102 +1,54 @@
-import { useState } from "react";
-import '../../CSS/customer_module/Payment.css'; // Import the CSS file
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPayments } from "../../redux/customer_model/Payments/paymentActions";
+import { useParams, useNavigate } from "react-router-dom";
+import "../../CSS/customer_module/MyTicket.css";
 
-const Payment = () => {
-  const [customerId, setCustomerId] = useState("");
-  const [customerName, setCustomerName] = useState("");
-  const [customerEmail, setCustomerEmail] = useState("");
-  const [paymentType, setPaymentType] = useState("GPay"); // Default value for the dropdown
-  const [amount, setAmount] = useState("");
-  const [agreeTerms, setAgreeTerms] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(`Sign Up Successful!\nCustomer ID: ${customerId}\nName: ${customerName}\nEmail: ${customerEmail}\nPayment Type: ${paymentType}\nAmount: ${amount}`);
-  }
+const PaymentList = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { payments, loading, error } = useSelector((state) => state.payments);
+  
+  const { id: customerId } = useParams(); 
+
+  useEffect(() => {
+    if (customerId) {
+      dispatch(fetchPayments(customerId));
+    }
+  }, [dispatch, customerId]);
+
+  if (loading) return <div className="container mt-5">Loading...</div>;
+  if (error) return <div className="container mt-5 text-danger">Error: {error}</div>;
+  if (!payments || payments.length === 0) return <div className="container mt-5">No payments available</div>;
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100">
-      <div className="paymentCard p-4 shadow">
-        <h2 className="h2-payment">Payment Form</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label className="form-label">Customer ID:
-              <input
-                type="text"
-                className="form-control"
-                value={customerId}
-                onChange={(e) => setCustomerId(e.target.value)}
-                placeholder="Enter customer ID"
-                required
-              />
-            </label>
-          </div>
-          <div className="form-group">
-            <label className="form-label">Customer Name:
-              <input
-                type="text"
-                className="form-control"
-                value={customerName}
-                onChange={(e) => setCustomerName(e.target.value)}
-                placeholder="Enter customer name"
-                required
-              />
-            </label>
-          </div>
-          <div className="form-group">
-            <label className="form-label">Customer Email:
-              <input
-                type="email"
-                className="form-control"
-                value={customerEmail}
-                onChange={(e) => setCustomerEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-              />
-            </label>
-          </div>
-          <div className="form-group">
-            <label className="form-label">Payment Type:
-              <select
-                className="form-control"
-                value={paymentType}
-                onChange={(e) => setPaymentType(e.target.value)}
-                required
-              >
-                <option value="GPay">GPay</option>
-                <option value="PhonePe">PhonePe</option>
-                <option value="Paytm">Paytm</option>
-              </select>
-            </label>
-          </div>
-          <div className="form-group">
-            <label className="form-label">Amount:
-              <input
-                type="number"
-                className="form-control"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                placeholder="Enter amount"
-                required
-              />
-            </label>
-          </div>
-          <div className="form-group form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="terms"
-              checked={agreeTerms}
-              onChange={(e) => setAgreeTerms(e.target.checked)}
-              required
-            />
-            <label className="form-check-label" htmlFor="terms">I agree to the terms and conditions</label>
-          </div>
-          <button type="submit" className="btn btn-primary">Pay</button>
-        </form>
+    <div className="container mt-5">
+      <h2>My Payments</h2>
+      <div className="table-responsive">
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th>Payment ID</th>
+              <th>Amount</th>
+              <th>Subscribed To</th>
+              <th>Payment Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {payments.map((payment, index) => (
+              <tr key={index}>
+                <td style={{ color: "blue" }}>{payment.payId}</td>
+                <td>{payment.amount}</td>
+                <td>{payment.department}</td>
+                <td>{new Date(payment.paymentDate).toLocaleDateString("en-GB")}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
-}
+};
 
-export default Payment;
+export default PaymentList;
