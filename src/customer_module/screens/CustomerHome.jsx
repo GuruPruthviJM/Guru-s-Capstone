@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Card from "../../components/Card";
+import Home from "../../components/Home"
 import "../../CSS/customer_module/CustomerHome.css";
 
 export default function CustomerHome() {
@@ -20,6 +21,7 @@ export default function CustomerHome() {
 
   return (
     <div>
+        <Home />
         <h3>Services Offered</h3>
         <div className="column">
         {cardData.map((data, i) => (

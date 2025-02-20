@@ -42,7 +42,7 @@ const StatusTickets = () => {
               style={{ cursor: "pointer" }}
             >
               <h5 className="text-white fs-5">{ticket.title}</h5>
-              <h2 className="fw-bold text-decoration-underline text-white fs-3">{ticket.count}</h2>
+              <h2 className="fw-bold text-decoration-underline text-white fs-3">{ticket.count||0}</h2>
             </div>
           </div>
         ))}

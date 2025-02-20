@@ -7,9 +7,7 @@ function Layout() {
     return (
         <>
             <Header />
-            <div className="mx-lg-5 px-lg-5 py-lg-3">  
-                <Outlet />  
-            </div>
+            <Outlet />
             <Footer />
         </>
     );

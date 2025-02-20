@@ -17,7 +17,7 @@ const ManagerTicketList = () => {
   }, [dispatch, managerId, ticketStatus,navigate]);
   
   const { tickets, loading, error } = useSelector((state) => state.tickets);
-
+  console.log(tickets);
   const handleClick = (ticketId) => {
     navigate(`${ticketId}`);
   };
@@ -55,7 +55,7 @@ const ManagerTicketList = () => {
                 <td>{ticket.ticketType}</td>
                 <td>{ticket.ticketDescription}</td>
                 <td>{ticket.employeeId}</td>
-                <td>{new Date(ticket.ticketRaiseDate).toLocaleDateString("en-GB")}</td>
+                <td>{new Date(ticket.ticketRaiseDate).toLocaleString("en-GB", { hour12: true, hour: "2-digit", minute: "2-digit", second: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })}</td>
               </tr>
             ))}
           </tbody>

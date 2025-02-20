@@ -3,6 +3,8 @@ import axios from "axios";
 export const fetchColleguesFromAPI = async (id) => {
   try {
     const token = JSON.parse(sessionStorage.getItem('user'))?.token
+    console.log(sessionStorage.getItem('user'));
+    
     if (!token) {
       throw new Error("User not authenticated");
     }

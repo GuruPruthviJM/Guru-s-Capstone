@@ -15,7 +15,7 @@ const TicketList = () => {
     if (customerId) {
       dispatch(fetchTickets(customerId));
     }
-  }, [dispatch, customerId]);
+  }, [dispatch, customerId]); 
 
   const handleClick = (customerId, ticketId) => {
     navigate(`${ticketId}`);
